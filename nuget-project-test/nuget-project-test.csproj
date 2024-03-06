@@ -8,7 +8,7 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Description>test nuget package</Description>
     <Authors>Vaidheeswaran Srinivasan</Authors>
-	<RepositoryUrl>https://github.com/VaidheeswaranS/nuget-project-test</RepositoryUrl>
+    <RepositoryUrl>https://github.com/VaidheeswaranS/nuget-project-test</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
