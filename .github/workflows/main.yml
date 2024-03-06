@@ -44,12 +44,12 @@ jobs:
         pwd
         echo "The workspace is located at $GITHUB_WORKSPACE"
     
-    # - name: Build and Pack NuGet package
-    #   run: dotnet pack ./nuget-project-test/nuget-project-test.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
-    #   # run: dotnet pack src/services/Florage.Shared/Florage.Shared.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
+    - name: Build and Pack NuGet package
+      run: dotnet pack ./nuget-project-test/nuget-project-test.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
+      # run: dotnet pack src/services/Florage.Shared/Florage.Shared.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
       
-    # - name: Upload NuGet package to GitHub
-    #   uses: actions/upload-artifact@v2
-    #   with:
-    #     name: nugetPackage
-    #     path: ./bin/Release/
+    - name: Upload NuGet package to GitHub
+      uses: actions/upload-artifact@v2
+      with:
+        name: nugetPackage
+        path: $GITHUB_WORKSPACE/**/bin/Release/*.nupkg
