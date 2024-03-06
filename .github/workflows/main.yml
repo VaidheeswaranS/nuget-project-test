@@ -70,8 +70,7 @@ jobs:
 
     - name: Listing contents
       run: |
-        ls -la
-        ls -la nugetPackage/
+        ls -la nugetPackage/nuget-project-test/
         pwd
 
     # - name: Push package to GitHub packages 
