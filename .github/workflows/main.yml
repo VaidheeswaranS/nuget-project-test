@@ -39,10 +39,12 @@ jobs:
         dotnet-version: 8.0.x
 
     - name: Listing the contents
-      run: ls -la nuget-project-test/
+      run: |
+        ls -la nuget-project-test/
+        pwd
     
     - name: Build and Pack NuGet package
-      run: dotnet pack nuget-project-test/nuget-project-test.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
+      run: dotnet pack ./nuget-project-test/nuget-project-test.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
       # run: dotnet pack src/services/Florage.Shared/Florage.Shared.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
       
     - name: Upload NuGet package to GitHub
