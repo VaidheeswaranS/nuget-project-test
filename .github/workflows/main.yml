@@ -74,10 +74,7 @@ jobs:
       with:
         tag_name: ${{ needs.build.outputs.Version }}
         release_name: Release ${{ needs.build.outputs.Version }}
-        body: |
-          changes in this release
-          - First Change
-          - Second Change
+        body: "This is the content for the release.. the notes goes here..."
         
     - name: Create Release
       if: needs.build.outputs.CommitsSinceVersionSource > 0 #Only release if there has been a commit/version change
