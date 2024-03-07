@@ -93,5 +93,5 @@ jobs:
       with:
         tag: ${{ needs.build.outputs.Version }}
         name: Release ${{ needs.build.outputs.Version }}
-        artifacts: "nugetPackage/*"
+        artifacts: "nugetPackage/nuget-project-test/bin/Release/*"
         token: ${{ secrets.NUGET_PACKAGE_TOKEN }}
