@@ -37,16 +37,9 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 8.0.x
-
-    - name: Listing the contents
-      run: |
-        ls -la nuget-project-test/
-        pwd
-        echo "The workspace is located at $GITHUB_WORKSPACE"
     
     - name: Build and Pack NuGet package
       run: dotnet pack ./nuget-project-test/nuget-project-test.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
-      # run: dotnet pack src/services/Florage.Shared/Florage.Shared.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
       
     - name: Upload NuGet package to GitHub
       uses: actions/upload-artifact@v2
@@ -67,11 +60,6 @@ jobs:
 
     - name: Prep packages
       run: dotnet nuget add source --username VaidheeswaranS --password ${{ secrets.NUGET_PACKAGE_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/VaidheeswaranS/index.json"
-
-    - name: Listing contents
-      run: |
-        ls -la nugetPackage/nuget-project-test/
-        pwd
 
     - name: Push package to GitHub packages 
       if: needs.build.outputs.CommitsSinceVersionSource > 0 #Only release if there has been a commit/version change  
